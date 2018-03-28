@@ -1,0 +1,75 @@
+
+<div class="container">
+  <div class="jumbotron">
+  <header style="background-color:#87cefa"><h2>Registration Form</h2></header>
+  
+    <form #frm="ngForm" class="form-horizontal" (ngSubmit)="addUser(frm)">
+      <div class="form-group">
+        <label for="userId" class="control-label col-sm-2"> UserID</label>
+        <div class="col-sm-10"><input type="text" class="form-control" name="userId" #userID="ngModel"ngModel 
+          minlength="6"pattern="[0-9]*" ></div>
+      </div>
+      <div *ngIf="userID?.touched && !userID.valid"class="alert alert-danger">
+        <div *ngIf="userID.errors?.minlength"> Invalid UserID(Minimum Length should be 6) !</div>
+        <div *ngIf="userID.errors?.pattern"> Invalid UserID (It should not have any character)!</div>
+        </div>
+      <div class="form-group">
+        <label for="Full Name" class="control-label col-sm-2">Full Name<span class="required">*</span></label>
+        <div class="col-sm-10"><input type="text" class="form-control" name="Full Name" #nameUse="ngModel" ngModel
+          pattern="[a-zA-Z][a-zA-Z]+" required></div>
+      </div>
+      
+      <div *ngIf="nameUse?.touched && !nameUse.valid"class="alert alert-danger col-sm-12">
+        <div *ngIf="nameUse.errors?.required"> Full Name is Required!</div>
+        <div *ngIf="nameUse.errors?.pattern"> Full Name should not have any number!</div>
+
+        </div>
+      <div class="form-group">
+        <label for="LoginID" class="control-label col-sm-2">LoginID<span class="required">*</span></label>
+        <div class="col-sm-10"><input type="text"class="form-control" name="LoginID" #nameUser1="ngModel"ngModel 
+          pattern="[a-zA-Z][a-zA-Z]+" required></div> 
+      </div>
+      <div *ngIf="nameUser1?.touched && !nameUser1.valid"class="alert alert-danger col-sm-12">
+        <div *ngIf="nameUser1.errors?.required">LoginID  is Required!</div>
+        <div *ngIf="nameUser1.errors?.pattern">LoginID does not contain contain any character!</div>
+
+        </div>
+      <div class="form-group">
+        <label for="Password" class="control-label col-sm-2">Password<span class="required">*</span></label>
+        <div class="col-sm-10"><input type="password" class="form-control" name="Password" #nameUser2="ngModel"ngModel
+          minlength="6" required></div> 
+      </div>
+      <div *ngIf="nameUser2?.touched && !nameUser2.valid"class="alert alert-danger col-sm-12">
+        <div *ngIf="nameUser2.errors?.required">Password  is Required!</div>
+        <div *ngIf="nameUser2.errors?.minlength">Password should be minium of 6 character!</div>
+        </div>
+      <div class="form-group">
+        <label for="Address" class="control-label col-sm-2">Address</label>
+        <div class="col-sm-10"><input type="text"  class="form-control"name="Address" ngModel  ></div>
+      </div>
+      <div class="form-group">
+        <label for="City" class="control-label col-sm-2">City</label>
+        <div class="col-sm-10"><input type="text" class="form-control" name="City" ngModel pattern="[a-zA-Z][a-zA-Z]+"></div>
+      </div>
+      <div class="form-group">
+        <label for="State" class="control-label col-sm-2">State</label>
+        <div class="col-sm-10"><input type="text"class="form-control" name="State" ngModel pattern="[a-zA-Z][a-zA-Z]+"></div> 
+      </div>
+      <div class="form-group">
+        <label for="Phone" class="control-label col-sm-2">Phone</label>
+        <div class="col-sm-10"><input type="text" class="form-control" name="Phone" #nameContact="ngModel" 
+          ngModel maxlength="10" minlength="10" pattern="[0-9]*"></div> 
+      </div>
+      <div *ngIf="nameContact?.touched && !nameContact.valid"class="alert alert-danger">
+        <div *ngIf="nameContact.errors?.minlength"> Invalid Contact!</div>
+        <div *ngIf="nameContact.errors?.pattern"> Invalid Contact (It should not have any character)!</div>
+        </div>
+     <div class="col-sm-3 col-sm-offset-4"> <button class="btn btn-info" type="submit">Submit</button></div>
+      <div class="col-sm-3"><button class="btn btn-info" type="reset">Cancel</button> </div>    
+     
+     </form>
+  
+  </div>
+  
+  </div>
+  
